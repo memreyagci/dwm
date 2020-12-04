@@ -143,6 +143,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
     
 	{ 0, XF86XK_AudioMute,		    spawn,		SHCMD("pactl set-sink-mute 0 toggle; kill -44 $(pidof dwmblocks)") },
+    { 0, XF86XK_AudioMicMute,       spawn,      SHCMD("pactl set-source-mute 1 toggle") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pactl-increase; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pactl set-sink-volume 0 -5%; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 5; pkill -RTMIN+5 dwmblocks") },
