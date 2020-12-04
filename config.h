@@ -143,9 +143,9 @@ static Key keys[] = {
     
 	{ 0, XF86XK_AudioMute,		    spawn,		SHCMD("pactl set-sink-mute 0 toggle; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pactl-increase; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pactl set-sink-volume 0 -5%; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 5") },
-	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 5") },
+	{ 1, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pactl set-sink-volume 0 -5%; kill -44 $(pidof dwmblocks)") },
+	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 5; pkill -RTMIN+5 dwmblocks") },
+	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 5; pkill -RTMIN+5 dwmblocks") },
     { 0, XK_Print,                  spawn,      SHCMD("flameshot full -p $HOME/Pictures/screenshots") },
     { MODKEY, XK_Print,             spawn,      SHCMD("flameshot gui") },
     { MODKEY,                       XK_x,       spawn,         SHCMD("slock") },
