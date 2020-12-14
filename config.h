@@ -12,7 +12,6 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=13:antialias=true:autohint=true", "Joypixels:size=10" };
-static const char dmenufont[]       = "monospace:size=12";
 
 #include "/home/musa/.cache/wal/colors-wal-dwm.h"
 //static const char col_gray1[]       = "#222222";
@@ -79,15 +78,14 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", "$color0", "-nf", "$color15", "-sb", "$color1", "-sf", "$color15", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 #include <X11/XF86keysym.h>
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	//{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run -nb '$color0' -nf '$color15' -sb '$color1' -sf '$color15'") },
+	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmen") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
