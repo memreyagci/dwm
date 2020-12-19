@@ -13,18 +13,24 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Liberation Mono:size=13:antialias=true:autohint=true", "Joypixels:size=10" };
 
-#include "/home/musa/.cache/wal/colors-wal-dwm.h"
-//static const char col_gray1[]       = "#222222";
-//static const char col_gray2[]       = "#444444";
-//static const char col_gray3[]       = "#bbbbbb";
-//static const char col_gray4[]       = "#eeeeee";
-//static const char col_cyan[]        = "#005577";
-//static const char col_red[]         = "#cc241d";
-//static const char *colors[][3]      = {
-//	/*               fg         bg         border   */
-//	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-//	[SchemeSel]  = { col_gray4, col_cyan,  col_red  },
-//};
+static const char norm_fg[] = "#ffffff";
+static const char norm_bg[] = "#282828";
+static const char norm_border[] = "#928374";
+
+static const char sel_fg[] = "#ffffff";
+static const char sel_bg[] = "#d79921";
+static const char sel_border[] = "#cc241d";
+
+static const char urg_fg[] = "#a89984";
+static const char urg_bg[] = "#cc241d";
+static const char urg_border[] = "#cc241d";
+
+static const char *colors[][3]      = {
+    /*               fg           bg         border                         */
+    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
+    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
+    [SchemeUrg] =  { urg_fg,      urg_bg,    urg_border },
+};
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
