@@ -127,8 +127,8 @@ static Key keys[] = {
 
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
@@ -158,7 +158,10 @@ static Key keys[] = {
 	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 5; pkill -RTMIN+5 dwmblocks") },
     { 0, XK_Print,                  spawn,      SHCMD("flameshot full -p $HOME/Pictures/screenshots") },
     { MODKEY, XK_Print,             spawn,      SHCMD("flameshot gui") },
-    { MODKEY,                       XK_x,       spawn,         SHCMD("slock") },
+    { MODKEY, XK_x,                 spawn,      SHCMD("slock") },
+
+    { MODKEY,                       XK_w,       spawn,         SHCMD("$BROWSER") },
+    { MODKEY,                       XK_f,       spawn,         SHCMD("$TERMINAL -e ranger") },
 };
 
 /* button definitions */
