@@ -147,7 +147,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("power-management-options")},
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
     
 	{ 0, XF86XK_AudioMute,		    spawn,		SHCMD("pactl set-sink-mute 0 toggle; kill -44 $(pidof dwmblocks)") },
