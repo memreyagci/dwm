@@ -91,7 +91,7 @@ static const char *termcmd[]  = { "st", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	//{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run -nb '$color0' -nf '$color15' -sb '$color1' -sf '$color15'") },
-	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu") },
+	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -150,10 +150,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("power-management-options")},
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
     
-	{ 0, XF86XK_AudioMute,		    spawn,		SHCMD("pactl set-sink-mute 0 toggle; kill -44 $(pidof dwmblocks)") },
-    { 0, XF86XK_AudioMicMute,       spawn,      SHCMD("pactl set-source-mute 1 toggle") },
-	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pactl-increase; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pactl set-sink-volume 0 -5%; kill -44 $(pidof dwmblocks)") },
+	{ 0, XF86XK_AudioMute,		    spawn,		SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+10 dwmblocks") },
+    { 0, XF86XK_AudioMicMute,       spawn,      SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
+	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pactl-increase; pkill -RTMIN+10 dwmblocks") },
+	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+10 dwmblocks") },
 	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 5; pkill -RTMIN+5 dwmblocks") },
 	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 5; pkill -RTMIN+5 dwmblocks") },
     { 0, XK_Print,                  spawn,      SHCMD("flameshot full -p $HOME/Pictures/screenshots") },
@@ -161,7 +161,9 @@ static Key keys[] = {
     { MODKEY, XK_x,                 spawn,      SHCMD("slock -m \"Locked at $(date +'%I:%M %p')\"") },
 
     { MODKEY,                       XK_w,       spawn,         SHCMD("$BROWSER") },
-    { MODKEY,                       XK_f,       spawn,         SHCMD("$TERMINAL -e ranger") },
+    { MODKEY,                       XK_f,       spawn,         SHCMD("$TERMINAL -e lfrun") },
+//{ MODKEY,                       XK_e,       spawn,         SHCMD("$TERMINAL -e neomutt; pkill -RTMIN+2 dwmblocks") },
+    { MODKEY,                       XK_e,       spawn,         SHCMD("$TERMINAL -e /home/musa/.local/bin/cronjobs/mail-update; neomutt") },
 };
 
 /* button definitions */
